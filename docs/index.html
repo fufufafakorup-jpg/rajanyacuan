@@ -6,11 +6,62 @@
   <title id="webTitle">Dashboard Pengajuan - Pejuang Casino</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+    /* CSS BARU UNTUK IKLAN/WELCOME BANNER */
+    .top-ads {
+      width: 100%;
+      max-width: 450px;
+      background: linear-gradient(90deg, #2ecc71, #27ae60);
+      color: #000;
+      padding: 12px 15px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      font-weight: 600;
+      font-size: 0.85rem;
+      box-shadow: 0 4px 15px rgba(46, 204, 113, 0.3);
+      animation: slideDown 0.5s ease;
     }
+
+    /* Ganti warna jika di tema Lion */
+    .lion-theme .top-ads {
+      background: linear-gradient(90deg, #f1c40f, #f39c12);
+      box-shadow: 0 4px 15px rgba(241, 196, 15, 0.3);
+    }
+
+    .ads-content b {
+      display: block;
+      font-size: 0.7rem;
+      opacity: 0.8;
+      text-transform: uppercase;
+    }
+
+    .close-ads {
+      background: rgba(0,0,0,0.2);
+      width: 25px;
+      height: 25px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 14px;
+      transition: 0.2s;
+    }
+
+    .close-ads:hover {
+      background: rgba(0,0,0,0.4);
+    }
+
+    @keyframes slideDown {
+      from { transform: translateY(-20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    /* CSS ASLI BAWAAN */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: 'Inter', sans-serif;
       background-color: #0d0d0d;
@@ -21,182 +72,43 @@
       align-items: center;
       transition: 0.3s;
     }
-    .header-text {
-      width: 100%;
-      max-width: 450px;
-      font-size: 0.9rem;
-      margin-bottom: 15px;
-      color: #888;
-      text-align: left;
-    }
-    .search-container {
-      width: 100%;
-      max-width: 450px;
-      position: relative;
-      margin-bottom: 25px;
-    }
-    .search-box {
-      width: 100%;
-      padding: 16px;
-      background: #151515;
-      border: 1px solid #222;
-      border-radius: 12px;
-      color: #fff;
-      font-size: 1rem;
-      outline: none;
-      transition: 0.3s;
-    }
-
-    /* WARNA TEMA */
-    .pejuang-theme .search-box {
-      border-color: #2ecc71;
-    }
-    .lion-theme .search-box {
-      border-color: #f1c40f;
-    }
-
-    .title-section {
-      width: 100%;
-      max-width: 450px;
-      font-size: 0.8rem;
-      color: #888;
-      margin-bottom: 15px;
-      font-weight: 500;
-      text-transform: uppercase;
-    }
-    .table-container {
-      width: 100%;
-      max-width: 450px;
-      background: #151515;
-      border-radius: 15px;
-      border: 1px solid #222;
-      height: 350px;
-      overflow-y: auto;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-    th {
-      padding: 15px;
-      text-align: left;
-      border-bottom: 1px solid #222;
-      color: #444;
-      font-size: 0.8rem;
-      position: sticky;
-      top: 0;
-      background: #151515;
-      z-index: 10;
-    }
-    td {
-      padding: 12px 15px;
-      font-size: 0.75rem;
-      color: #777;
-      border-bottom: 1px dotted #222;
-    }
-
-    /* WARNA STATUS */
-    .pejuang-theme .status-done {
-      color: #2ecc71;
-      font-weight: 600;
-    }
-    .lion-theme .status-done {
-      color: #f1c40f;
-      font-weight: 600;
-    }
-    .status-pending {
-      color: #f1c40f;
-      font-weight: 600;
-    }
-
-    .overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: rgba(0, 0, 0, 0.5);
-      display: none;
-      justify-content: center;
-      align-items: center;
-      z-index: 9999;
-    }
-    .modal-card {
-      background: linear-gradient(180deg, #1a2a22 0%, #111111 100%);
-      width: 90%;
-      max-width: 360px;
-      padding: 40px 20px;
-      border-radius: 25px;
-      text-align: center;
-      border: 1px solid rgba(46, 204, 113, 0.2);
-    }
-
-    .check-circle {
-      width: 85px;
-      height: 85px;
-      border-radius: 50%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin: 0 auto 25px;
-      font-size: 45px;
-      color: white;
-    }
-    .pejuang-theme .check-circle {
-      background: linear-gradient(135deg, #2ecc71 0%, #3498db 100%);
-    }
-    .lion-theme .check-circle {
-      background: linear-gradient(135deg, #f1c40f 0%, #e67e22 100%);
-    }
-
-    .btn-ya {
-      width: 100%;
-      padding: 16px;
-      border: none;
-      border-radius: 12px;
-      color: #000;
-      font-weight: 700;
-      font-size: 1.1rem;
-      cursor: pointer;
-    }
-    .pejuang-theme .btn-ya {
-      background: #2ecc71;
-    }
-    .lion-theme .btn-ya {
-      background: #f1c40f;
-    }
-
-    .bottom-nav {
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-      max-width: 500px;
-      background: #111;
-      display: flex;
-      justify-content: space-around;
-      padding: 15px 0;
-      border-top: 1px solid #222;
-    }
-    .nav-item {
-      text-align: center;
-      color: #555;
-      font-size: 0.75rem;
-      cursor: pointer;
-    }
-    .pejuang-theme .nav-item.active {
-      color: #2ecc71;
-    }
-    .lion-theme .nav-item.active {
-      color: #f1c40f;
-    }
-    .nav-icon {
-      display: block;
-      font-size: 1.2rem;
-      margin-bottom: 5px;
-    }
+    .header-text { width: 100%; max-width: 450px; font-size: 0.9rem; margin-bottom: 15px; color: #888; text-align: left; }
+    .search-container { width: 100%; max-width: 450px; position: relative; margin-bottom: 25px; }
+    .search-box { width: 100%; padding: 16px; background: #151515; border: 1px solid #222; border-radius: 12px; color: #fff; font-size: 1rem; outline: none; transition: 0.3s; }
+    .pejuang-theme .search-box { border-color: #2ecc71; }
+    .lion-theme .search-box { border-color: #f1c40f; }
+    .title-section { width: 100%; max-width: 450px; font-size: 0.8rem; color: #888; margin-bottom: 15px; font-weight: 500; text-transform: uppercase; }
+    .table-container { width: 100%; max-width: 450px; background: #151515; border-radius: 15px; border: 1px solid #222; height: 350px; overflow-y: auto; }
+    table { width: 100%; border-collapse: collapse; }
+    th { padding: 15px; text-align: left; border-bottom: 1px solid #222; color: #444; font-size: 0.8rem; position: sticky; top: 0; background: #151515; z-index: 10; }
+    td { padding: 12px 15px; font-size: 0.75rem; color: #777; border-bottom: 1px dotted #222; }
+    .pejuang-theme .status-done { color: #2ecc71; font-weight: 600; }
+    .lion-theme .status-done { color: #f1c40f; font-weight: 600; }
+    .status-pending { color: #f1c40f; font-weight: 600; }
+    .overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0, 0, 0, 0.5); display: none; justify-content: center; align-items: center; z-index: 9999; }
+    .modal-card { background: linear-gradient(180deg, #1a2a22 0%, #111111 100%); width: 90%; max-width: 360px; padding: 40px 20px; border-radius: 25px; text-align: center; border: 1px solid rgba(46, 204, 113, 0.2); }
+    .check-circle { width: 85px; height: 85px; border-radius: 50%; display: flex; justify-content: center; align-items: center; margin: 0 auto 25px; font-size: 45px; color: white; }
+    .pejuang-theme .check-circle { background: linear-gradient(135deg, #2ecc71 0%, #3498db 100%); }
+    .lion-theme .check-circle { background: linear-gradient(135deg, #f1c40f 0%, #e67e22 100%); }
+    .btn-ya { width: 100%; padding: 16px; border: none; border-radius: 12px; color: #000; font-weight: 700; font-size: 1.1rem; cursor: pointer; }
+    .pejuang-theme .btn-ya { background: #2ecc71; }
+    .lion-theme .btn-ya { background: #f1c40f; }
+    .bottom-nav { position: fixed; bottom: 0; width: 100%; max-width: 500px; background: #111; display: flex; justify-content: space-around; padding: 15px 0; border-top: 1px solid #222; }
+    .nav-item { text-align: center; color: #555; font-size: 0.75rem; cursor: pointer; }
+    .pejuang-theme .nav-item.active { color: #2ecc71; }
+    .lion-theme .nav-item.active { color: #f1c40f; }
+    .nav-icon { display: block; font-size: 1.2rem; margin-bottom: 5px; }
   </style>
 </head>
 <body class="pejuang-theme">
+
+  <div class="top-ads" id="welcomeAds">
+    <div class="ads-content">
+      Selamat datang di Dashboard Pejuang Casino
+      <b>Developer: Baim Official</b>
+    </div>
+    <div class="close-ads" onclick="closeAds()">✕</div>
+  </div>
 
   <p class="header-text" id="brandDesc">
     Silakan masukkan nomor WhatsApp pengguna untuk melakukan pencarian (PEJUANG CASINO)
@@ -222,13 +134,9 @@
 
   <div class="overlay" id="overlay">
     <div class="modal-card">
-      <div class="check-circle">
-        ✓
-      </div>
+      <div class="check-circle">✓</div>
       <h3>pengajuan jackpot pengguna ini</h3>
-      <p style="color: #888; margin-bottom: 25px;">
-        Berhasil
-      </p>
+      <p style="color: #888; margin-bottom: 25px;">Berhasil</p>
       <button class="btn-ya" onclick="prosesData()">Ya</button>
     </div>
   </div>
@@ -249,7 +157,12 @@
   </div>
 
   <script>
-    let currentBrand = "PEJUANG"; // Default
+    // FUNGSI TUTUP IKLAN
+    function closeAds() {
+      document.getElementById('welcomeAds').style.display = 'none';
+    }
+
+    let currentBrand = "PEJUANG";
     const waInput = document.getElementById('waInput');
     const tableBody = document.getElementById('tableBody');
     const tableHead = document.getElementById('tableHead');
@@ -266,55 +179,34 @@
           currentBrand = "LION";
           document.body.className = "lion-theme";
           webTitle.innerText = "Dashboard Pengajuan - Lion Casino";
+          document.querySelector('.ads-content').innerHTML = "Selamat datang di Dashboard Lion Casino <b>Developer: Baim Official</b>";
         } else {
           currentBrand = "PEJUANG";
           document.body.className = "pejuang-theme";
           webTitle.innerText = "Dashboard Pengajuan - Pejuang Casino";
+          document.querySelector('.ads-content').innerHTML = "Selamat datang di Dashboard Pejuang Casino <b>Developer: Baim Official</b>";
         }
-        showPengajuan(); // Reset teks tabel ke brand baru
+        showPengajuan();
         alert(`Berhasil beralih ke ${currentBrand} CASINO`);
       }
     }
 
     function openModal() {
-      if (waInput.value.trim() === "") {
-        alert("Isi nomor dulu Bang!"); return;
-      }
+      if (waInput.value.trim() === "") { alert("Isi nomor dulu Bang!"); return; }
       document.getElementById('overlay').style.display = 'flex';
     }
 
-    function closeModal() {
-      document.getElementById('overlay').style.display = 'none';
-    }
+    function closeModal() { document.getElementById('overlay').style.display = 'none'; }
 
     function showHistoryData() {
       document.getElementById('navData').classList.add('active');
       document.getElementById('navPengajuan').classList.remove('active');
       tableTitle.innerText = `REAL WD ${currentBrand} CASINO HARI INI`;
       tableHead.innerHTML = "<tr><th>Tanggal</th><th>Nama</th><th>Nomor WA</th><th>Status</th></tr>";
-
-      const now = new Date().toLocaleDateString('id-ID');
-      const fixedData = [{
-        nama: "yulia",
-        wa: "+6282141064844"
-      },
-        {
-          nama: "Muhammad Radit",
-          wa: "+6281244567781"
-    },
-    {
-      nama: "muswati",
-     wa: "+6281929507909"
-    },
-    { 
-      nama: "Azizx",
-      wa: "+6281532328793",
-    },
-    { 
-      nama: "karim",
-      wa: "+6283110076060",
       
-        }];
+      const now = new Date().toLocaleDateString('id-ID');
+      const fixedData = [{nama: "yulia", wa: "+6282141064844"}, {nama: "Muhammad Radit", wa: "+6281244567781"}, {nama: "muswati", wa: "+6281929507909"}, {nama: "Azizx", wa: "+6281532328793"}, {nama: "karim", wa: "+6283110076060"}];
+      
       tableBody.innerHTML = "";
       fixedData.forEach(item => {
         tableBody.innerHTML += `<tr><td>${now}</td><td>${item.nama}</td><td>${item.wa}</td><td><span class="status-done">DONE</span></td></tr>`;
@@ -333,7 +225,6 @@
     function prosesData() {
       const now = new Date().toLocaleDateString('id-ID');
       const isDataMenu = document.getElementById('navData').classList.contains('active');
-
       if (isDataMenu) {
         const namaManual = prompt("Masukkan Nama Player:");
         if (!namaManual) return;
@@ -345,9 +236,7 @@
       waInput.value = "";
     }
 
-    waInput.addEventListener("keypress", (e) => {
-      if (e.key === "Enter") openModal();
-    });
+    waInput.addEventListener("keypress", (e) => { if (e.key === "Enter") openModal(); });
   </script>
 </body>
 </html>
