@@ -1,242 +1,151 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title id="webTitle">Dashboard Pengajuan - Pejuang Casino</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
-  <style>
-    /* CSS BARU UNTUK IKLAN/WELCOME BANNER */
-    .top-ads {
-      width: 100%;
-      max-width: 450px;
-      background: linear-gradient(90deg, #2ecc71, #27ae60);
-      color: #000;
-      padding: 12px 15px;
-      border-radius: 12px;
-      margin-bottom: 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: relative;
-      font-weight: 600;
-      font-size: 0.85rem;
-      box-shadow: 0 4px 15px rgba(46, 204, 113, 0.3);
-      animation: slideDown 0.5s ease;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>NAGA HOKI - PASTICUAN</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* CSS TETAP SAMA SEPERTI SEBELUMNYA (DIPERSINGKAT UNTUK EFEKTIVITAS) */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Inter', sans-serif; background-color: #000; color: #fff; padding-bottom: 70px; }
+        
+        header { background-color: #000; padding: 10px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #222; position: sticky; top: 0; z-index: 100; }
+        .header-left { display: flex; align-items: center; gap: 15px; }
+        .header-icon { color: #fff; font-size: 1.2rem; cursor: pointer; }
 
-    /* Ganti warna jika di tema Lion */
-    .lion-theme .top-ads {
-      background: linear-gradient(90deg, #f1c40f, #f39c12);
-      box-shadow: 0 4px 15px rgba(241, 196, 15, 0.3);
-    }
-
-    .ads-content b {
-      display: block;
-      font-size: 0.7rem;
-      opacity: 0.8;
-      text-transform: uppercase;
-    }
-
-    .close-ads {
-      background: rgba(0,0,0,0.2);
-      width: 25px;
-      height: 25px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
-      cursor: pointer;
-      font-size: 14px;
-      transition: 0.2s;
-    }
-
-    .close-ads:hover {
-      background: rgba(0,0,0,0.4);
-    }
-
-    @keyframes slideDown {
-      from { transform: translateY(-20px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
-    }
-
-    /* CSS ASLI BAWAAN */
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: #0d0d0d;
-      color: #ffffff;
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      transition: 0.3s;
-    }
-    .header-text { width: 100%; max-width: 450px; font-size: 0.9rem; margin-bottom: 15px; color: #888; text-align: left; }
-    .search-container { width: 100%; max-width: 450px; position: relative; margin-bottom: 25px; }
-    .search-box { width: 100%; padding: 16px; background: #151515; border: 1px solid #222; border-radius: 12px; color: #fff; font-size: 1rem; outline: none; transition: 0.3s; }
-    .pejuang-theme .search-box { border-color: #2ecc71; }
-    .lion-theme .search-box { border-color: #f1c40f; }
-    .title-section { width: 100%; max-width: 450px; font-size: 0.8rem; color: #888; margin-bottom: 15px; font-weight: 500; text-transform: uppercase; }
-    .table-container { width: 100%; max-width: 450px; background: #151515; border-radius: 15px; border: 1px solid #222; height: 350px; overflow-y: auto; }
-    table { width: 100%; border-collapse: collapse; }
-    th { padding: 15px; text-align: left; border-bottom: 1px solid #222; color: #444; font-size: 0.8rem; position: sticky; top: 0; background: #151515; z-index: 10; }
-    td { padding: 12px 15px; font-size: 0.75rem; color: #777; border-bottom: 1px dotted #222; }
-    .pejuang-theme .status-done { color: #2ecc71; font-weight: 600; }
-    .lion-theme .status-done { color: #f1c40f; font-weight: 600; }
-    .status-pending { color: #f1c40f; font-weight: 600; }
-    .overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0, 0, 0, 0.5); display: none; justify-content: center; align-items: center; z-index: 9999; }
-    .modal-card { background: linear-gradient(180deg, #1a2a22 0%, #111111 100%); width: 90%; max-width: 360px; padding: 40px 20px; border-radius: 25px; text-align: center; border: 1px solid rgba(46, 204, 113, 0.2); }
-    .check-circle { width: 85px; height: 85px; border-radius: 50%; display: flex; justify-content: center; align-items: center; margin: 0 auto 25px; font-size: 45px; color: white; }
-    .pejuang-theme .check-circle { background: linear-gradient(135deg, #2ecc71 0%, #3498db 100%); }
-    .lion-theme .check-circle { background: linear-gradient(135deg, #f1c40f 0%, #e67e22 100%); }
-    .btn-ya { width: 100%; padding: 16px; border: none; border-radius: 12px; color: #000; font-weight: 700; font-size: 1.1rem; cursor: pointer; }
-    .pejuang-theme .btn-ya { background: #2ecc71; }
-    .lion-theme .btn-ya { background: #f1c40f; }
-    .bottom-nav { position: fixed; bottom: 0; width: 100%; max-width: 500px; background: #111; display: flex; justify-content: space-around; padding: 15px 0; border-top: 1px solid #222; }
-    .nav-item { text-align: center; color: #555; font-size: 0.75rem; cursor: pointer; }
-    .pejuang-theme .nav-item.active { color: #2ecc71; }
-    .lion-theme .nav-item.active { color: #f1c40f; }
-    .nav-icon { display: block; font-size: 1.2rem; margin-bottom: 5px; }
-  </style>
+        .btn { flex: 1; padding: 15px; text-align: center; font-weight: 700; text-transform: uppercase; font-size: 0.9rem; cursor: pointer; border: none; }
+        .btn-login { background-color: #b71c1c; color: #fff; }
+        .btn-register { background-color: #ef6c00; color: #fff; }
+        
+        .reg-input { width: 100%; padding: 12px; background: #111; border: 1px solid #333; border-radius: 5px; color: #fff; margin-top: 5px; outline: none; }
+        
+        /* MODAL & LOBBY */
+        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 1000; justify-content: center; align-items: center; }
+        .modal-box { background: #fff; width: 85%; max-width: 320px; border-radius: 15px; padding: 30px 20px; text-align: center; color: #333; }
+        
+        .game-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; padding: 15px; }
+        .game-card { background: #111; border-radius: 10px; border: 1px solid #222; text-align: center; cursor: pointer; }
+        .game-card img { width: 100%; height: 90px; object-fit: cover; }
+        
+        .bottom-nav { position: fixed; bottom: 0; left: 0; width: 100%; background-color: #000; display: flex; justify-content: space-around; padding: 12px 0; border-top: 3px solid #b71c1c; z-index: 101; }
+        .nav-link { text-align: center; color: #888; font-size: 0.7rem; cursor: pointer; }
+        .nav-link span { display: block; font-size: 1.3rem; }
+    </style>
 </head>
-<body class="pejuang-theme">
+<body>
 
-  <div class="top-ads" id="welcomeAds">
-    <div class="ads-content">
-      Selamat datang di Dashboard Pejuang Casino
-      <b>Developer: Baim Official</b>
+    <header>
+        <div class="header-left">
+            <span class="header-icon" onclick="alert('Menu Samping Segera Hadir!')">☰</span>
+            <div style="color: #ef5350; font-weight: bold; font-size: 1.2rem;">🐉 PASTI CUAN</div>
+        </div>
+        <span class="header-icon" onclick="showProfile()">👤</span>
+    </header>
+
+    <div id="loginPage" style="padding: 20px;">
+        <h2 style="color: #c1a35f; text-align: center; margin-bottom: 20px;">LOGIN MEMBER</h2>
+        <label>Username</label>
+        <input type="text" id="loginUser" class="reg-input" placeholder="Masukkan Username">
+        <label style="display: block; margin-top: 15px;">Password</label>
+        <input type="password" id="loginPass" class="reg-input" placeholder="Masukkan Password">
+        
+        <button onclick="prosesLogin()" style="width: 100%; padding: 15px; background: #b71c1c; border: none; color: white; font-weight: bold; margin-top: 25px; border-radius: 5px;">LOGIN SEKARANG</button>
+        <p style="text-align: center; margin-top: 20px; font-size: 0.8rem; color: #888;">Belum punya akun? <span style="color: #ef6c00; cursor: pointer;" onclick="navTo('register')">Daftar Di Sini</span></p>
     </div>
-    <div class="close-ads" onclick="closeAds()">✕</div>
-  </div>
 
-  <p class="header-text" id="brandDesc">
-    Silakan masukkan nomor WhatsApp pengguna untuk melakukan pencarian (PEJUANG CASINO)
-  </p>
-
-  <div class="search-container">
-    <input type="text" id="waInput" class="search-box" placeholder="silahkan taruh nomor db anda">
-    <span style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); color: #555; cursor: pointer;" onclick="openModal()">🔍</span>
-  </div>
-
-  <p class="title-section" id="tableTitle">
-    Catatan pengajuan jackpot pejuang casino
-  </p>
-
-  <div class="table-container">
-    <table>
-      <thead id="tableHead">
-        <tr><th>Tanggal</th><th>Nomor WA</th><th>Uid</th><th>No.Deposit</th></tr>
-      </thead>
-      <tbody id="tableBody"></tbody>
-    </table>
-  </div>
-
-  <div class="overlay" id="overlay">
-    <div class="modal-card">
-      <div class="check-circle">✓</div>
-      <h3>pengajuan jackpot pengguna ini</h3>
-      <p style="color: #888; margin-bottom: 25px;">Berhasil</p>
-      <button class="btn-ya" onclick="prosesData()">Ya</button>
+    <div id="registerPage" style="display: none; padding: 20px;">
+        <h2 style="color: #c1a35f; text-align: center; margin-bottom: 20px;">DAFTAR AKUN BARU</h2>
+        <input type="text" id="regUser" class="reg-input" placeholder="Username Baru">
+        <input type="password" class="reg-input" placeholder="Password" style="margin-top: 10px;">
+        <input type="number" class="reg-input" placeholder="Nomor WhatsApp" style="margin-top: 10px;">
+        
+        <button onclick="prosesDaftar()" style="width: 100%; padding: 15px; background: #ef6c00; border: none; color: white; font-weight: bold; margin-top: 25px; border-radius: 5px;">SUBMIT PENDAFTARAN</button>
+        <p style="text-align: center; margin-top: 20px; font-size: 0.8rem; color: #888;" onclick="navTo('login')">Sudah ada akun? Login</p>
     </div>
-  </div>
 
-  <div class="bottom-nav">
-    <div class="nav-item" id="navData" onclick="showHistoryData()">
-      <span class="nav-icon">🕒</span> Data
+    <div id="lobbyPage" style="display: none;">
+        <div style="background: #111; padding: 15px; text-align: center; border-bottom: 1px solid #c1a35f;">
+            <p style="color: #c1a35f; font-size: 0.8rem;">Selamat Datang, <b id="userNameLobby"></b></p>
+            <h2 id="jackpotText">IDR 389,406,783.00</h2>
+        </div>
+        
+        <div class="game-grid">
+            <div class="game-card" onclick="playGame('Olympus')"><img src="https://i.ibb.co/L6S9xWj/olympus.jpg"><p>OLYMPUS</p></div>
+            <div class="game-card" onclick="playGame('Starlight')"><img src="https://i.ibb.co/mS0GfXm/starlight.jpg"><p>STARLIGHT</p></div>
+            <div class="game-card" onclick="playGame('Mahjong')"><img src="https://i.postimg.cc/mD8zYpL6/mahjong-ways.jpg"><p>MAHJONG</p></div>
+        </div>
     </div>
-    <div class="nav-item active" id="navPengajuan" onclick="showPengajuan()">
-      <span class="nav-icon">📝</span> Pengajuan
+
+    <div class="bottom-nav">
+        <div class="nav-link" onclick="navTo('login')"><span>🏠</span>HOME</div>
+        <div class="nav-link" onclick="alert('Hubungi CS di WA: 08xxxxx')"><span>🎧</span>LIVECHAT</div>
+        <div class="nav-link" onclick="showProfile()"><span>👤</span>AKUN</div>
     </div>
-    <div class="nav-item" onclick="alert('Menu Telepon')">
-      <span class="nav-icon">📞</span> Telepon
+
+    <div id="successModal" class="modal-overlay">
+        <div class="modal-box">
+            <div style="font-size: 3rem; color: #a5dc86;">✓</div>
+            <h2>Berhasil!</h2>
+            <p>Akun anda sudah aktif. Silahkan login untuk mulai bermain.</p>
+            <button onclick="closeModal()" style="width: 100%; padding: 10px; background: #7b68ee; color: white; border: none; margin-top: 15px;">OK</button>
+        </div>
     </div>
-    <div class="nav-item" onclick="switchAccount()">
-      <span class="nav-icon">👤</span> Akun
-    </div>
-  </div>
 
-  <script>
-    // FUNGSI TUTUP IKLAN
-    function closeAds() {
-      document.getElementById('welcomeAds').style.display = 'none';
-    }
-
-    let currentBrand = "PEJUANG";
-    const waInput = document.getElementById('waInput');
-    const tableBody = document.getElementById('tableBody');
-    const tableHead = document.getElementById('tableHead');
-    const tableTitle = document.getElementById('tableTitle');
-    const brandDesc = document.getElementById('brandDesc');
-    const webTitle = document.getElementById('webTitle');
-
-    function switchAccount() {
-      let targetBrand = (currentBrand === "PEJUANG") ? "LION CASINO": "PEJUANG CASINO";
-      let konfirmasi = confirm(`Apakah anda ingin beralih ke ${targetBrand}?`);
-
-      if (konfirmasi) {
-        if (currentBrand === "PEJUANG") {
-          currentBrand = "LION";
-          document.body.className = "lion-theme";
-          webTitle.innerText = "Dashboard Pengajuan - Lion Casino";
-          document.querySelector('.ads-content').innerHTML = "Selamat datang di Dashboard Lion Casino <b>Developer: Baim Official</b>";
-        } else {
-          currentBrand = "PEJUANG";
-          document.body.className = "pejuang-theme";
-          webTitle.innerText = "Dashboard Pengajuan - Pejuang Casino";
-          document.querySelector('.ads-content').innerHTML = "Selamat datang di Dashboard Pejuang Casino <b>Developer: Baim Official</b>";
+    <script>
+        // Navigasi antar halaman
+        function navTo(page) {
+            document.getElementById('loginPage').style.display = 'none';
+            document.getElementById('registerPage').style.display = 'none';
+            document.getElementById('lobbyPage').style.display = 'none';
+            
+            if(page === 'login') document.getElementById('loginPage').style.display = 'block';
+            if(page === 'register') document.getElementById('registerPage').style.display = 'block';
         }
-        showPengajuan();
-        alert(`Berhasil beralih ke ${currentBrand} CASINO`);
-      }
-    }
 
-    function openModal() {
-      if (waInput.value.trim() === "") { alert("Isi nomor dulu Bang!"); return; }
-      document.getElementById('overlay').style.display = 'flex';
-    }
+        function prosesDaftar() {
+            const user = document.getElementById('regUser').value;
+            if(!user) return alert("Isi username!");
+            document.getElementById('successModal').style.display = 'flex';
+        }
 
-    function closeModal() { document.getElementById('overlay').style.display = 'none'; }
+        function closeModal() {
+            document.getElementById('successModal').style.display = 'none';
+            navTo('login');
+        }
 
-    function showHistoryData() {
-      document.getElementById('navData').classList.add('active');
-      document.getElementById('navPengajuan').classList.remove('active');
-      tableTitle.innerText = `REAL WD ${currentBrand} CASINO HARI INI`;
-      tableHead.innerHTML = "<tr><th>Tanggal</th><th>Nama</th><th>Nomor WA</th><th>Status</th></tr>";
-      
-      const now = new Date().toLocaleDateString('id-ID');
-      const fixedData = [{nama: "yulia", wa: "+6282141064844"}, {nama: "Muhammad Radit", wa: "+6281244567781"}, {nama: "muswati", wa: "+6281929507909"}, {nama: "Azizx", wa: "+6281532328793"}, {nama: "karim", wa: "+6283110076060"}];
-      
-      tableBody.innerHTML = "";
-      fixedData.forEach(item => {
-        tableBody.innerHTML += `<tr><td>${now}</td><td>${item.nama}</td><td>${item.wa}</td><td><span class="status-done">DONE</span></td></tr>`;
-      });
-    }
+        function prosesLogin() {
+            const user = document.getElementById('loginUser').value;
+            if(user === "") return alert("Masukkan username!");
+            
+            // Simulasi Login Sukses
+            document.getElementById('loginPage').style.display = 'none';
+            document.getElementById('lobbyPage').style.display = 'block';
+            document.getElementById('userNameLobby').innerText = user;
+            startJackpot();
+        }
 
-    function showPengajuan() {
-      document.getElementById('navData').classList.remove('active');
-      document.getElementById('navPengajuan').classList.add('active');
-      tableTitle.innerText = `Catatan pengajuan jackpot ${currentBrand.toLowerCase()} casino`;
-      brandDesc.innerText = `Silakan masukkan nomor WhatsApp pengguna untuk melakukan pencarian (${currentBrand} CASINO)`;
-      tableHead.innerHTML = "<tr><th>Tanggal</th><th>Nomor WA</th><th>Uid</th><th>No.Deposit</th></tr>";
-      tableBody.innerHTML = "";
-    }
+        function showProfile() {
+            const currentDisplay = document.getElementById('lobbyPage').style.display;
+            if(currentDisplay === 'block') {
+                alert("Menu Akun: Saldo Anda IDR 0. Silahkan Deposit!");
+            } else {
+                alert("Silahkan Login Terlebih Dahulu!");
+                navTo('login');
+            }
+        }
 
-    function prosesData() {
-      const now = new Date().toLocaleDateString('id-ID');
-      const isDataMenu = document.getElementById('navData').classList.contains('active');
-      if (isDataMenu) {
-        const namaManual = prompt("Masukkan Nama Player:");
-        if (!namaManual) return;
-        tableBody.insertAdjacentHTML('beforeend', `<tr><td>${now}</td><td>${namaManual}</td><td>${waInput.value}</td><td><span class="status-pending">PROSES</span></td></tr>`);
-      } else {
-        tableBody.insertAdjacentHTML('afterbegin', `<tr><td>${now}</td><td>${waInput.value}</td><td>${Math.floor(100000 + Math.random() * 900000)}</td><td>DEP-${Math.floor(1000 + Math.random() * 9000)}</td></tr>`);
-      }
-      closeModal();
-      waInput.value = "";
-    }
+        function playGame(name) {
+            alert("Membuka Game: " + name + "... (Koneksi ke Server)");
+        }
 
-    waInput.addEventListener("keypress", (e) => { if (e.key === "Enter") openModal(); });
-  </script>
+        function startJackpot() {
+            let num = 389406783;
+            setInterval(() => {
+                num += Math.floor(Math.random() * 500);
+                document.getElementById("jackpotText").innerText = "IDR " + num.toLocaleString() + ".00";
+            }, 200);
+        }
+    </script>
 </body>
 </html>
