@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title id="webTitle">Dashboard - RAJANYACUAN</title>
+  <title id="webTitle">Dashboard - Pejuang Casino</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
     /* RESET & SKALA KECIL */
@@ -14,17 +14,21 @@
       font-size: 0.95rem;
     }
 
+    /* Kecilin font dasar */
+
     body {
       font-family: 'Inter', sans-serif;
       background-color: #0d0d0d;
       color: #ffffff;
       padding: 15px;
+      /* Kurangi padding luar */
       display: flex;
       flex-direction: column;
       align-items: center;
       transition: 0.3s;
     }
 
+    /* CONTAINER DIBUAT LEBIH RAMPING */
     .header-text {
       width: 100%;
       max-width: 400px;
@@ -43,8 +47,9 @@
     .search-box {
       width: 100%;
       padding: 12px;
+      /* Lebih tipis */
       background: #151515;
-      border: 1px solid #f1c40f; /* Warna Gold Cuan */
+      border: 1px solid #222;
       border-radius: 10px;
       color: #fff;
       font-size: 0.85rem;
@@ -55,12 +60,13 @@
       width: 100%;
       max-width: 400px;
       font-size: 0.7rem;
-      color: #f1c40f;
+      color: #888;
       margin-bottom: 10px;
       text-transform: uppercase;
       letter-spacing: 1px;
     }
 
+    /* TABEL DIBUAT LEBIH PADAT */
     .table-container {
       width: 100%;
       max-width: 400px;
@@ -68,6 +74,7 @@
       border-radius: 12px;
       border: 1px solid #222;
       height: 320px;
+      /* Sedikit lebih pendek biar kelihatan semua */
       overflow-y: auto;
     }
 
@@ -89,28 +96,41 @@
 
     td {
       padding: 8px 10px;
+      /* Padding lebih sempit */
       font-size: 0.68rem;
-      color: #ccc;
+      /* Font data lebih kecil */
+      color: #888;
       border-bottom: 1px dotted #222;
     }
 
-    .status-done {
+    /* WARNA TEMA */
+    .pejuang-theme .search-box {
+      border-color: #2ecc71;
+    }
+    .lion-theme .search-box {
+      border-color: #f1c40f;
+    }
+    .pejuang-theme .status-done {
+      color: #2ecc71;
+      font-weight: 600;
+    }
+    .lion-theme .status-done {
       color: #f1c40f;
       font-weight: 600;
     }
     .status-pending {
-      color: #e67e22;
+      color: #f1c40f;
       font-weight: 600;
     }
 
-    /* MODAL */
+    /* MODAL DIBUAT LEBIH KECIL */
     .overlay {
       position: fixed;
       top: 0;
       left: 0;
       width: 100vw;
       height: 100vh;
-      background: rgba(0,0,0,0.8);
+      background: rgba(0,0,0,0.7);
       display: none;
       justify-content: center;
       align-items: center;
@@ -123,7 +143,7 @@
       padding: 25px 15px;
       border-radius: 20px;
       text-align: center;
-      border: 1px solid #f1c40f;
+      border: 1px solid #333;
     }
     .check-circle {
       width: 60px;
@@ -134,7 +154,13 @@
       align-items: center;
       margin: 0 auto 15px;
       font-size: 30px;
-      color: #000;
+      color: white;
+    }
+
+    .pejuang-theme .check-circle {
+      background: #2ecc71;
+    }
+    .lion-theme .check-circle {
       background: #f1c40f;
     }
 
@@ -145,11 +171,16 @@
       border-radius: 8px;
       color: #000;
       font-weight: 700;
-      background: #f1c40f;
       cursor: pointer;
     }
+    .pejuang-theme .btn-ya {
+      background: #2ecc71;
+    }
+    .lion-theme .btn-ya {
+      background: #f1c40f;
+    }
 
-    /* NAVIGASI BAWAH */
+    /* NAVIGASI BAWAH LEBIH TIPIS */
     .bottom-nav {
       position: fixed;
       bottom: 0;
@@ -167,7 +198,10 @@
       font-size: 0.65rem;
       cursor: pointer;
     }
-    .nav-item.active {
+    .pejuang-theme .nav-item.active {
+      color: #2ecc71;
+    }
+    .lion-theme .nav-item.active {
       color: #f1c40f;
     }
     .nav-icon {
@@ -177,15 +211,15 @@
     }
   </style>
 </head>
-<body>
+<body class="pejuang-theme">
 
   <p class="header-text" id="brandDesc">
-    Cari nomor WA (RAJANYACUAN)
+    Cari nomor WA (PEJUANG CASINO)
   </p>
 
   <div class="search-container">
     <input type="text" id="waInput" class="search-box" placeholder="Masukkan nomor DB...">
-    <span style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); color: #f1c40f; cursor: pointer;" onclick="openModal()">🔍</span>
+    <span style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); color: #444; cursor: pointer;" onclick="openModal()">🔍</span>
   </div>
 
   <p class="title-section" id="tableTitle">
@@ -203,12 +237,14 @@
 
   <div class="overlay" id="overlay">
     <div class="modal-card">
-      <div class="check-circle">✓</div>
-      <h3 style="font-size: 1rem; margin-bottom: 5px; color: #f1c40f;">CUAN BERHASIL</h3>
-      <p style="color: #888; font-size: 0.75rem; margin-bottom: 20px;">
-        Pengajuan Rajanyacuan telah diproses
+      <div class="check-circle">
+        ✓
+      </div>
+      <h3 style="font-size: 1rem; margin-bottom: 5px;">Berhasil</h3>
+      <p style="color: #666; font-size: 0.75rem; margin-bottom: 20px;">
+        Pengajuan telah diproses
       </p>
-      <button class="btn-ya" onclick="prosesData()">OKE GAS</button>
+      <button class="btn-ya" onclick="prosesData()">Ya</button>
     </div>
   </div>
 
@@ -219,15 +255,16 @@
     <div class="nav-item active" id="navPengajuan" onclick="showPengajuan()">
       <span class="nav-icon">📝</span> Pengajuan
     </div>
-    <div class="nav-item" onclick="alert('Layanan Telepon Rajanyacuan')">
+    <div class="nav-item" onclick="alert('Menu Telepon')">
       <span class="nav-icon">📞</span> Telepon
     </div>
     <div class="nav-item" onclick="switchAccount()">
-      <span class="nav-icon">👤</span> Profil
+      <span class="nav-icon">👤</span> Akun
     </div>
   </div>
 
   <script>
+    let currentBrand = "PEJUANG";
     const waInput = document.getElementById('waInput');
     const tableBody = document.getElementById('tableBody');
     const tableHead = document.getElementById('tableHead');
@@ -236,7 +273,13 @@
     const webTitle = document.getElementById('webTitle');
 
     function switchAccount() {
-      alert("Profil Rajanyacuan Aktif!");
+      let targetBrand = (currentBrand === "PEJUANG") ? "LION CASINO": "PEJUANG CASINO";
+      if (confirm(`Pindah ke ${targetBrand}?`)) {
+        currentBrand = (currentBrand === "PEJUANG") ? "LION": "PEJUANG";
+        document.body.className = currentBrand.toLowerCase() + "-theme";
+        webTitle.innerText = "Dashboard - " + currentBrand;
+        showPengajuan();
+      }
     }
 
     function openModal() {
@@ -251,32 +294,53 @@
     function showHistoryData() {
       document.getElementById('navData').classList.add('active');
       document.getElementById('navPengajuan').classList.remove('active');
-      tableTitle.innerText = "WD RAJANYACUAN HARI INI";
+      tableTitle.innerText = `WD ${currentBrand} HARI INI`;
       tableHead.innerHTML = "<tr><th>Provider</th><th>Nama</th><th>WA</th><th>Status</th></tr>";
 
-      const historyData = [
-        { provider: "PG SOFT", nama: "DEWI089", wa: "+62838561xxxx", status: "DONE" },
-        { provider: "PRAGMATIC", nama: "Febiyanto", wa: "+62822879xxxx", status: "DONE" }
-      ];
+      const historyData = [{
+        provider: "PG SOFT",
+        nama: "DEWI089",
+        wa: "+6283856129174",
+        status: "DONE"
+      },
+    {
+      provider: "PRAGMATIC",
+          nama: "Febiyanto",
+          wa: "+6282287986919",
+          status: "DONE"
+    },
+        {
+          provider: "PRAGMATIC",
+          nama: "Sultan JP",
+          wa: "+6282287986919",
+          status: "DONE"
+        }];
 
       tableBody.innerHTML = "";
       historyData.forEach(item => {
-        tableBody.innerHTML += `<tr><td>${item.provider}</td><td>${item.nama}</td><td>${item.wa}</td><td><span class="status-done">${item.status}</span></td></tr>`;
+        const statusClass = item.status === "DONE" ? "status-done": "status-pending";
+        tableBody.innerHTML += `<tr><td>${item.provider}</td><td>${item.nama}</td><td>${item.wa}</td><td><span class="${statusClass}">${item.status}</span></td></tr>`;
       });
     }
 
     function showPengajuan() {
       document.getElementById('navData').classList.remove('active');
       document.getElementById('navPengajuan').classList.add('active');
-      tableTitle.innerText = "Pengajuan Jackpot RAJANYACUAN";
-      brandDesc.innerText = "Cari nomor WA (RAJANYACUAN)";
+      tableTitle.innerText = `Pengajuan Jackpot ${currentBrand}`;
+      brandDesc.innerText = `Cari nomor WA (${currentBrand} CASINO)`;
       tableHead.innerHTML = "<tr><th>Tgl</th><th>Nomor WA</th><th>Uid</th><th>Depo</th></tr>";
       tableBody.innerHTML = "";
     }
 
     function prosesData() {
       const now = new Date().toLocaleDateString('id-ID');
-      tableBody.insertAdjacentHTML('afterbegin', `<tr><td>${now}</td><td>${waInput.value}</td><td>${Math.floor(100000+Math.random()*900000)}</td><td>DEP-${Math.floor(1000+Math.random()*9000)}</td></tr>`);
+      if (document.getElementById('navData').classList.contains('active')) {
+        const prov = prompt("Provider?") || "PG SOFT";
+        const nama = prompt("Nama?") || "User";
+        tableBody.insertAdjacentHTML('beforeend', `<tr><td>${prov}</td><td>${nama}</td><td>${waInput.value}</td><td><span class="status-pending">PROSES</span></td></tr>`);
+      } else {
+        tableBody.insertAdjacentHTML('afterbegin', `<tr><td>${now}</td><td>${waInput.value}</td><td>${Math.floor(100000+Math.random()*900000)}</td><td>DEP-${Math.floor(1000+Math.random()*9000)}</td></tr>`);
+      }
       closeModal();
       waInput.value = "";
     }
