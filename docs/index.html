@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title id="webTitle">Dashboard - Pejuang Casino</title>
+  <title id="webTitle">Dashboard - pengajuan jackpot</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
     /* RESET & SKALA KECIL */
@@ -214,7 +214,7 @@
 <body class="pejuang-theme">
 
   <p class="header-text" id="brandDesc">
-    Cari nomor WA (PEJUANG CASINO)
+    Cari nomor terpilih 
   </p>
 
   <div class="search-container">
@@ -242,7 +242,7 @@
       </div>
       <h3 style="font-size: 1rem; margin-bottom: 5px;">Berhasil</h3>
       <p style="color: #666; font-size: 0.75rem; margin-bottom: 20px;">
-        Pengajuan telah diproses
+        Pengajuan jackpot telah berhasil 
       </p>
       <button class="btn-ya" onclick="prosesData()">Ya</button>
     </div>
@@ -273,7 +273,7 @@
     const webTitle = document.getElementById('webTitle');
 
     function switchAccount() {
-      let targetBrand = (currentBrand === "PEJUANG") ? "LION CASINO": "PEJUANG CASINO";
+      let targetBrand = (currentBrand === "PEJUANG") ? "jackpot": "jackpot";
       if (confirm(`Pindah ke ${targetBrand}?`)) {
         currentBrand = (currentBrand === "PEJUANG") ? "LION": "PEJUANG";
         document.body.className = currentBrand.toLowerCase() + "-theme";
@@ -299,7 +299,7 @@
 
       const historyData = [{
         provider: "PG SOFT",
-        nama: "DEWI089",
+        nama: "DEWIPutri",
         wa: "+6283856129174",
         status: "DONE"
       },
@@ -311,7 +311,7 @@
     },
         {
           provider: "PRAGMATIC",
-          nama: "Sultan JP",
+          nama: "alfikri",
           wa: "+6282287986919",
           status: "DONE"
         }];
